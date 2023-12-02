@@ -24,7 +24,7 @@ extpy-objs += src/extpy.crash.o
 BINS += runso.so
 runso-objs += src/runso.crash.o
 
-CFLAGS += -rdynamic -fPIC -std=gnu99 -Wall -Werror
+CFLAGS += -g -rdynamic -fPIC -std=gnu99 -Wall -Werror
 
 all: check_configure $(patsubst %.so,$(DIR_RELEASE)/%.so,$(BINS))
 
