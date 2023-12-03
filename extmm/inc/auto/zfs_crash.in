@@ -7,11 +7,11 @@ spl_kmem_slab_t
 spl_kmem_obj_t
 zvol_state_t
 struct hlist_head
-sbd_lu_t
-sbd_status_t
-sm_section_hdr_t
-sbd_meta_start_t
-sbd_lu_info_1_1_t
+-sbd_lu_t
+-sbd_status_t
+-sm_section_hdr_t
+-sbd_meta_start_t
+-sbd_lu_info_1_1_t
 tsd_hash_table_t
 tsd_hash_bin_t
 tsd_hash_entry_t
