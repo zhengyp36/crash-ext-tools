@@ -104,8 +104,39 @@ class ExtPy(object):
             self.conn = None
             self.debug('ExtPy Server is stopped.')
 
+class ExtPyWrap(object):
+    instance = None
+    instanceRef = 0
+    instanceId = 0
+    
+    def __init__(self):
+        cls = type(self)
+        self.id = cls.instanceId
+        cls.instanceId += 1
+        
+        if cls.instanceRef == 0:
+            cls.instance = ExtPy()
+            cls.instance.startServer()
+            time.sleep(0.2)
+        cls.instanceRef += 1
+        
+        self.instance = cls.instance
+        self.instance.debug('ExtPyWrapInit.%d: instance=%s, instanceRef=%d=>%d'
+            % (self.id, repr(cls.instance), cls.instanceRef-1, cls.instanceRef))
+    
+    def __del__(self):
+        cls = type(self)
+        self.instance.debug('ExtPyWrapDel.%d: instance=%s, instanceRef=%d=>%d'
+            % (self.id, repr(cls.instance), cls.instanceRef, cls.instanceRef-1))
+        self.instance = None
+        
+        assert(cls.instanceRef > 0)
+        cls.instanceRef -= 1
+        if cls.instanceRef == 0:
+            cls.instance = None
+    
+    def run(self, cmd):
+        return self.instance.run(cmd)
+
 def crashInstance():
-    instance = ExtPy()
-    instance.startServer()
-    time.sleep(0.2)
-    return instance
+    return ExtPyWrap()

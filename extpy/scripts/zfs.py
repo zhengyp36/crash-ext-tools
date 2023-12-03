@@ -72,8 +72,8 @@ def cmd_compile(args, genInc=True):
             return
 
 class ZfsCrashConf(object):
-    MOD_LIST = ['zfs', 'spl', 'zstmf', 'zstmf_sbd', 'ziscsit', 'zidm']
-    GDB_VARS = ['spa_namespace_avl', 'sbd_lu_list']
+    MOD_LIST = ['zfs', 'spl'] # , 'zstmf', 'zstmf_sbd', 'ziscsit', 'zidm'
+    GDB_VARS = ['spa_namespace_avl'] # , 'sbd_lu_list'
     RUNSO_LS = ['ls_zvol.c', 'rwlock.c']
     
     def __init__(self, crash):
@@ -149,6 +149,7 @@ if __name__ == '__main__':
     
     if len(sys.argv) > 1 and sys.argv[1] == 'DEBUG':
         os.environ['EXTPY_DEBUG'] = 'true'
+        extpy.ExtPy.DEBUG = True
         sys.argv = [sys.argv[0]] + sys.argv[2:]
     
     if len(sys.argv) == 1 or sys.argv[1] not in commands:
