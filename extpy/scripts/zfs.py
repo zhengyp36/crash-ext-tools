@@ -6,6 +6,7 @@ import sys
 import extpy
 import mod
 import ctyp
+import time
 
 appname = os.path.basename(sys.argv[0])
 crash = extpy.crashInstance()
@@ -13,10 +14,12 @@ crash = extpy.crashInstance()
 def genIncHeader():
     zfs_crash_in = '/usr/local/extpy/inc/auto/zfs_crash.in'
     if os.path.exists(zfs_crash_in):
+        ts = time.time()
         wrscreen('Generate zfs_crash.h:\n')
         wrscreen('-' * 80 + '\n')
         ctyp.Main(ctyp.Crash(crash), ['ctyp.py', zfs_crash_in]).run()
         wrscreen('-' * 80 + '\n')
+        wrscreen('Generate zfs_crash.h cost %fs\n' % (time.time() - ts))
 
 def cmd_compile(args, genInc=True):
     dir_extpy = '/usr/local/extpy'
