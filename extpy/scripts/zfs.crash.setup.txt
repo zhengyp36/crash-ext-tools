@@ -1,0 +1,3 @@
+# usage: crash -i zfs.crash.setup.txt
+extend extpy.so
+extpy zfs.py setup
