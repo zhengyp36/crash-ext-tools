@@ -1,0 +1,32 @@
+# module: zfs,spl
+dmu_buf_impl_t
+dbuf_hash_table_t
+avl_tree_t
+spa_t
+spl_kmem_cache_t
+spl_kmem_slab_t
+spl_kmem_obj_t
+zvol_state_t
+struct hlist_head
+-sbd_lu_t
+-sbd_status_t
+-sm_section_hdr_t
+-sbd_meta_start_t
+-sbd_lu_info_1_1_t
+tsd_hash_table_t
+tsd_hash_bin_t
+tsd_hash_entry_t
+
+vdev_need_resilver_func_t
+abd_iter_func_t
+vdev_ops_t
+spa_t
+abd_t
+dsl_crypto_key_t
+vdev_t
+zio_t
+enum zio_stage
+vdev_phys_t
+vdev_boot_envblock_t
+nvpair_t
+data_type_t
